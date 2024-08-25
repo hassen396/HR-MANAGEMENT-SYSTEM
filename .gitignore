@@ -1,0 +1,64 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.csproj.user
+*.csproj.nuget.g.props
+*.csproj.nuget.g.targets
+*.dbmdl
+*.suo
+*.vscode/
+*.vs/
+*.idea/
+
+# ASP.NET Core
+*.log
+*.pdb
+*.cache
+*.dmp
+*.pidb
+*.db
+*.bak
+*.swp
+*.tmp
+*.DS_Store
+
+# Entity Framework Core
+Migrations/
+App.db
+*.sqlite
+
+# React
+node_modules/
+build/
+dist/
+*.log
+*.env
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+*.local
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# JetBrains Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+history/
+*.code-workspace
+
+# Others
+*.tgz
+*.gz
+*.zip
+*.tar
+*.rar
+*.7z
