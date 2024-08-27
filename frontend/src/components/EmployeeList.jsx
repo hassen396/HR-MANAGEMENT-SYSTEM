@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);
@@ -15,15 +17,32 @@ const EmployeeList = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Employees</h1>
-            <ul>
-                {employees.map(employee => (
-                    <li key={employee.id}>
-                        {employee.firstName} {employee.lastName} - {employee.email}
-                    </li>
-                ))}
-            </ul>
+        <div className="container mt-6">
+            <h1 className="mb-4">Employees</h1>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {employees.map(employee => (
+                        <tr key={employee.id}>
+                            <td>{employee.id}</td>
+                            <td>{employee.firstName}</td>
+                            <td>{employee.lastName}</td>
+                            <td>
+                                <Link to={`/employee/${employee.id}`} className="btn btn-primary">
+                                    Detail
+                                </Link>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
