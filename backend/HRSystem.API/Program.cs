@@ -1,6 +1,5 @@
 using HRSystem.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
 using HRSystem.Application.Interfaces;
 using HRSystem.Application.Services;
 using HRSystem.Domain.Repositories;
@@ -12,12 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register IEmployeeService with its implementation
+// Register Services and Repositories
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-
-// Register IEmployeeRepository with its implementation
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-//add Core services
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IJobPositionService, JobPositionService>();
+builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
+
+// Add CORS policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -29,12 +31,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-
 builder.Services.AddControllers();
-
-// Register other services, such as application services and repositories
-// builder.Services.AddTransient<IEmployeeService, EmployeeService>();
-// builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
 
 var app = builder.Build();
 
@@ -49,13 +46,11 @@ else
     app.UseHsts();
 }
 
-// Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.UseCors("AllowAllOrigins");
-
 
 app.Run();

@@ -1,8 +1,6 @@
 using HRSystem.Application.Interfaces;
 using HRSystem.Domain.Entities;
 using HRSystem.Domain.Repositories;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace HRSystem.Application.Services
 {
@@ -17,27 +15,27 @@ namespace HRSystem.Application.Services
 
         public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
-            return await _employeeRepository.GetAllAsync();
+            return await _employeeRepository.GetAllEmployeesAsync();
         }
 
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
-            return await _employeeRepository.GetByIdAsync(id);
+            return await _employeeRepository.GetEmployeeByIdAsync(id);
         }
 
         public async Task AddEmployeeAsync(Employee employee)
         {
-            await _employeeRepository.AddAsync(employee);
+            await _employeeRepository.AddEmployeeAsync(employee);
         }
 
         public async Task UpdateEmployeeAsync(Employee employee)
         {
-            await _employeeRepository.UpdateAsync(employee);
+            await _employeeRepository.UpdateEmployeeAsync(employee);
         }
 
         public async Task DeleteEmployeeAsync(int id)
         {
-            await _employeeRepository.DeleteAsync(id);
+            await _employeeRepository.DeleteEmployeeAsync(id);
         }
     }
 }
