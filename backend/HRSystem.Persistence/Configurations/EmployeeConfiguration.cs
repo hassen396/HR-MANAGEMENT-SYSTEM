@@ -2,7 +2,6 @@ using HRSystem.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-
 namespace HRSystem.Persistence.Configurations
 {
     public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
@@ -15,7 +14,6 @@ namespace HRSystem.Persistence.Configurations
             builder.Property(e => e.LastName).IsRequired().HasMaxLength(50);
             builder.Property(e => e.Email).IsRequired().HasMaxLength(100);
             builder.Property(e => e.Phone).HasMaxLength(20);
-            // Additional configuration can be done here
         }
     }
 }

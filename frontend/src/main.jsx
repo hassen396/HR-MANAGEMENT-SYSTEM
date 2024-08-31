@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import EmployeeList from './components/EmployeeList';
-import EmployeeDetail from './components/EmployeeDetail';
+import App from './App';
+import './assets/styles/main.css'; // Ensure this path is correct
 
-const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<EmployeeList />} />
-      <Route path="/employee/:id" element={<EmployeeDetail />} />
-    </Routes>
-  </Router>
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);

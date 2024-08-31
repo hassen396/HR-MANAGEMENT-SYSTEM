@@ -4,4 +4,4 @@ GET {HRSystem.API_HostAddress}/weatherforecast/
 Accept: application/json
 
 ###
-http://localhost:5000/api/employee
+GET http://localhost:5000/api/employee
